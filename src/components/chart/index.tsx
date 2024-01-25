@@ -14,7 +14,6 @@ type Props = {
   strokeColor?: Array<string>;
   height?: number | string;
   width?: number | string;
-  xaxisLabel?: boolean;
   stacked?: boolean;
   plotOptions?: boolean;
   showGrid?: boolean;
@@ -29,7 +28,6 @@ export const CustomChart: FC<Props> = ({
   series,
   className,
   height,
-  // xaxisLabel,
   showGrid,
   categories,
   borderRadiusApplication = "end",
@@ -45,13 +43,12 @@ export const CustomChart: FC<Props> = ({
         fontFamily: "Plus Jakarta Sans",
       },
       formatter: (value: any) => {
-        return type !== "line" && value > 0 ? `${value}.00` : `${value}`;
+        return type !== "line" && value > 0 ? `${value}.000` : `${value}`;
       },
-      min: (num = 20) => {
-        return num;
+
+      min: () => {
+        return [...series[0]["data"]];
       },
-      max: 200,
-      tickAmount: 4,
     },
 
     axisBorder: {
@@ -77,7 +74,7 @@ export const CustomChart: FC<Props> = ({
           colors: "#A3A3A3",
           fontSize: "12px",
           fontFamily: "Plus Jakarta Sans",
-          fontWeight: 500,
+          fontWeight: 400,
         },
       },
       axisBorder: {
@@ -115,18 +112,10 @@ export const CustomChart: FC<Props> = ({
     },
     legend: {
       show: true,
-    },
-
-    states: {
-      normal: {
-        filter: { type: "none", value: 0 },
-      },
-      hover: {
-        filter: { type: "darken", value: 0.2 },
-      },
-      active: {
-        filter: { type: "darken", value: 0.2 },
-        allowMultipleDataPointsSelection: false,
+      labels: {
+        colors: "whitesmoke",
+        fontFamily: "Poppins",
+        backgroundColor: "green",
       },
     },
 
@@ -169,26 +158,19 @@ export const CustomChart: FC<Props> = ({
     tooltip: {
       enabled: true,
       shared: false,
-      followCursor: true,
-      intersect: true,
-      inverseOrder: true,
-      hideEmptySeries: true,
-      fillSeriesColor: false,
       show: false,
       style: {
         fontSize: "12px",
         fontFamily: "Plus Jakarta Sans, sans-serif",
+        background: "green",
       },
       x: {
-        show: false,
+        show: true,
       },
       y: {
         show: true,
-        formatter: undefined,
-        title: {
-          formatter: () => {
-            return `Amount:$`;
-          },
+        formatter: function (value: number) {
+          return `$${value}`;
         },
       },
 
@@ -200,7 +182,7 @@ export const CustomChart: FC<Props> = ({
         horizontal: false,
         borderRadius: 20,
         borderRadiusApplication: borderRadiusApplication,
-        barHeight: "100%",
+        barHeight: "10%",
         colors: {
           backgroundBarColors: ["#34CAA5"],
           backgroundBarOpacity: 0.02,
@@ -211,6 +193,33 @@ export const CustomChart: FC<Props> = ({
         },
       },
     },
+    responsive: [
+      {
+        breakpoint: 500,
+        options: {
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: 5,
+            },
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+      {
+        breakpoint: 1000,
+        options: {
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: 15,
+            },
+          },
+        },
+      },
+    ],
   };
 
   return (
@@ -218,7 +227,7 @@ export const CustomChart: FC<Props> = ({
       options={options}
       series={series}
       type={type}
-      height={height ?? 250}
+      height={height ?? 322}
       className={className}
     />
   );

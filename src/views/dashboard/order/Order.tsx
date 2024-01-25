@@ -1,14 +1,14 @@
 import type { TableProps } from "antd";
 import { motion } from "framer-motion";
-import Cooper from "../../assets/svg/cooper.svg";
-import Corey from "../../assets/svg/corey.svg";
-import Invoice from "../../assets/svg/invoice.svg";
-import Jay from "../../assets/svg/jaden.svg";
-import Marcus from "../../assets/svg/marcus.svg";
-import Philip from "../../assets/svg/philip.svg";
-import Button from "../../components/button";
-import GeegTable from "../../components/table";
-import Typography from "../../components/typography";
+import Cooper from "../../../assets/svg/cooper.svg";
+import Corey from "../../../assets/svg/corey.svg";
+import Invoice from "../../../assets/svg/invoice.svg";
+import Jay from "../../../assets/svg/jaden.svg";
+import Marcus from "../../../assets/svg/marcus.svg";
+import Philip from "../../../assets/svg/philip.svg";
+import Button from "../../../components/button";
+import GeegTable from "../../../components/table";
+import Typography from "../../../components/typography";
 
 type UserType = { name: string; img: string };
 interface DataType {
@@ -117,22 +117,15 @@ const data: DataType[] = [
     status: "paid",
     invoice: "View",
   },
-  {
-    key: "6",
-    name: { name: "Cooper Press", img: Cooper },
-    date: "Nov 14, 2023",
-    amount: "$100, 000",
-    status: "refund",
-    invoice: "View",
-  },
 ];
 
-const variant3 = {
-  hidden: { opacity: 0, x: -500 },
+const variant = {
+  hidden: { opacity: 0, x: -300 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
+      type: "spring",
       duration: 1,
       stiffness: 100,
     },
@@ -141,9 +134,9 @@ const variant3 = {
 
 export const OrderTable = () => {
   return (
-    <motion.div variants={variant3} animate="visible" initial="hidden">
-      <div className="w-full bg-white rounded-lg px-5 h-[450px] overflow-scroll">
-        <div className="py-5 flex items-center justify-between sticky left-0 top-0 bg-white z-50">
+    <motion.div variants={variant} animate="visible" initial="hidden">
+      <div className="w-full bg-white rounded-lg px-5">
+        <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white z-50">
           <Typography
             type="h1"
             variant="textXl"

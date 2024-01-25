@@ -7,9 +7,42 @@ body {
 }
 
 ::-webkit-scrollbar {
+  background: #34caa5;
+  height: 3px;
+  width: 3px;
   display: none;
 }
 
 .apexcharts-tooltip {
   background: #090c2c !important;
+}
+
+.ant-table-thead > tr {
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: transparent !important;
+  color: #a3a3a3 !important;
+  font-size: 16px;
+  font-weight: 400 !important;
+}
+
+.ant-table-thead > tr > th::before {
+  display: none;
+}
+
+.ant-table-content > table {
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-left: -10px !important;
+}
+
+.ant-table-tbody > tr {
+  cursor: pointer !important;
+}
+
+#chart {
+  max-width: 100px;
+  margin: 35px auto;
 }

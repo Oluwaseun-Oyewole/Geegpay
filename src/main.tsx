@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <ConfigProvider
       theme={{
         token: {
-          fontFamily: "Poppins",
+          fontFamily: "Plus Jakarta Sans",
         },
       }}
     >

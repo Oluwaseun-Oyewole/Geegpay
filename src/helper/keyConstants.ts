@@ -89,15 +89,15 @@ export const Platforms = [
   },
   {
     title: "XStore",
-    amount: "$2,500,000",
+    amount: "$600,000",
     progress: "35%",
     percentage: "+15%",
     color: "#ED544E",
   },
   {
     title: "Artisan Aisle",
-    amount: "$1,800,000",
-    progress: "40%",
+    amount: "$2,800,000",
+    progress: "70%",
     percentage: "+25%",
     color: "#6160DC",
   },

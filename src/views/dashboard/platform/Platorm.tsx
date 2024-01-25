@@ -1,14 +1,15 @@
 import { motion } from "framer-motion";
-import Button from "../../components/button";
-import Typography from "../../components/typography";
-import { Platforms } from "../../helper/keyConstants";
+import Button from "../../../components/button";
+import Typography from "../../../components/typography";
+import { Platforms } from "../../../helper/keyConstants";
 
-const variant4 = {
-  hidden: { opacity: 0, x: 500 },
+const variant = {
+  hidden: { opacity: 0, x: 300 },
   visible: {
     opacity: 1,
     x: 0,
     transition: {
+      type: "spring",
       duration: 1,
       stiffness: 100,
     },
@@ -17,9 +18,9 @@ const variant4 = {
 
 const Platform = () => {
   return (
-    <motion.div variants={variant4} animate="visible" initial="hidden">
-      <div className="w-full bg-white rounded-lg px-5 h-[450px] overflow-scroll">
-        <div className="py-5 flex items-center justify-between sticky left-0 top-0 bg-white">
+    <motion.div variants={variant} animate="visible" initial="hidden">
+      <div className="w-full bg-white rounded-lg px-5 h-[445px] overflow-scroll scroll-smooth">
+        <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white">
           <Typography
             type="h1"
             variant="textXl"
@@ -32,7 +33,7 @@ const Platform = () => {
           />
         </div>
 
-        <div className="pt-5">
+        <div className="pt-2">
           {Platforms?.map((el, index) => {
             return (
               <div key={index}>
@@ -49,16 +50,16 @@ const Platform = () => {
                     style={{ width: el.progress, background: el.color }}
                   ></span>
                 </div>
-                <div className="flex items-center justify-between py-3">
+                <div className="flex items-center justify-between pt-4 pb-5">
                   <Typography
                     type="p"
                     children={el.amount}
-                    className="text-gray400"
+                    className="text-gray400 text-[17px]"
                   />
                   <Typography
                     type="p"
                     children={el.percentage}
-                    className="text-gray400"
+                    className="text-gray400 text-[17px]"
                   />
                 </div>
               </div>
