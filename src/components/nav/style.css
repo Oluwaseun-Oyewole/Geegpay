@@ -1,0 +1,59 @@
+ul,
+li {
+  list-style: none;
+  margin: 0;
+}
+
+.overlay {
+  opacity: 1;
+  /* background: linear-gradient(#2d314d, transparent); */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 01;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.fade-in {
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.fade-in {
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.fade-out {
+  animation: fade-out 1s ease-in-out forwards;
+}
+
+.has-fade {
+  visibility: hidden;
+}

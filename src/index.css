@@ -15,10 +15,13 @@ body {
 
 .apexcharts-tooltip {
   background: #090c2c !important;
+  width: 100px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ant-table-thead > tr {
-  overflow: hidden;
 }
 
 .ant-table-thead > tr > th {
@@ -42,7 +45,7 @@ body {
   cursor: pointer !important;
 }
 
-#chart {
+/* #chart {
   max-width: 100px;
   margin: 35px auto;
-}
+} */

@@ -37,7 +37,7 @@ const GeegCharts = () => {
       variants={variant}
       animate="visible"
       initial="hidden"
-      className="bg-white pt-4 px-5 rounded-xl border-[1px] border-gray200"
+      className="bg-white md:pt-4 pt-2 px-2 md:px-5 rounded-xl border-[1px] border-gray200"
     >
       <div className="flex items-center justify-between">
         <Typography
@@ -45,6 +45,7 @@ const GeegCharts = () => {
           variant="textXl"
           weight="medium"
           children="Sales Trends"
+          className="!text-sm md:text-xl"
         />
 
         <div className="grid grid-flow-col items-center grid-cols-[max-content_auto]">
@@ -92,7 +93,7 @@ const GeegCharts = () => {
           </Dropdown>
         </div>
       </div>
-      <div className="mt-5">
+      <div className="mt-2 lg:mt-5">
         <Chart />
       </div>
     </motion.div>

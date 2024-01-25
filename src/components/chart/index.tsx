@@ -45,12 +45,7 @@ export const CustomChart: FC<Props> = ({
       formatter: (value: any) => {
         return type !== "line" && value > 0 ? `${value}.000` : `${value}`;
       },
-
-      min: () => {
-        return [...series[0]["data"]];
-      },
     },
-
     axisBorder: {
       show: false,
     },
@@ -92,15 +87,15 @@ export const CustomChart: FC<Props> = ({
         position: "front",
         opacity: 1,
         fill: {
-          type: "solid",
-          color: "rgba(52,202,165,0.7)",
+          type: "gradient",
+          color: "rgba(52,202,165,1)",
 
           gradient: {
-            colorFrom: "rgba(52,202,165,0.1)",
-            colorTo: "rgba(52,202,165,0.1)",
-            stops: [0, 50],
-            opacityFrom: 0.4,
-            opacityTo: 0,
+            colorFrom: "rgba(52,202,165,1)",
+            colorTo: "rgba(52,202,165,1)",
+            stops: [0, 80, 100],
+            opacityFrom: 1,
+            opacityTo: 0.2,
           },
         },
       },
@@ -165,7 +160,7 @@ export const CustomChart: FC<Props> = ({
         background: "green",
       },
       x: {
-        show: true,
+        show: false,
       },
       y: {
         show: true,
@@ -201,6 +196,7 @@ export const CustomChart: FC<Props> = ({
             bar: {
               horizontal: false,
               borderRadius: 5,
+              width: "10px",
             },
           },
           legend: {
@@ -227,7 +223,7 @@ export const CustomChart: FC<Props> = ({
       options={options}
       series={series}
       type={type}
-      height={height ?? 322}
+      height={height ?? 340}
       className={className}
     />
   );
