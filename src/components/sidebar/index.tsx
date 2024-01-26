@@ -71,7 +71,12 @@ const Sidebar = () => {
             <img src={Setting} alt="logo" />
           </Button>
 
-          <Button onClick={handleLogout}>
+          <Button
+            onClick={() => {
+              handleLogout();
+              window.location.reload();
+            }}
+          >
             <Tooltip title="logout">
               <img src={Logout} alt="logo" />
             </Tooltip>

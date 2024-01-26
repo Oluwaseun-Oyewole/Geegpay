@@ -7,7 +7,7 @@ const AuthLayout = () => {
   return (
     <div
       className={`relative h-screen overflow-hidden ${
-        isDarkMode ? "bg-black text-primary" : "bg-gray-50"
+        isDarkMode ? "bg-black text-primary" : "bg-white"
       }`}
     >
       <div className="absolute right-4 top-4">
