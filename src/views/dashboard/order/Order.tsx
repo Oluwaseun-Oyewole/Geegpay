@@ -134,14 +134,20 @@ const variant = {
 
 export const OrderTable = () => {
   return (
-    <motion.div variants={variant} animate="visible" initial="hidden">
-      <div className="w-full bg-white rounded-lg px-5">
-        <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white z-50">
+    <motion.div
+      variants={variant}
+      animate="visible"
+      initial="hidden"
+      className="col-span-2"
+    >
+      <div className="w-full bg-white rounded-lg px-5 ">
+        <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white z-10 ">
           <Typography
             type="h1"
             variant="textXl"
             weight="medium"
             children="Last Orders"
+            className="!text-lg md:!text-xl"
           />
           <Button
             children="See All"

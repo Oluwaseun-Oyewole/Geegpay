@@ -26,7 +26,7 @@ const GeegTable: React.FC<ITableProps> = ({
         onChange={onChange}
         pagination={pagination}
         {...rest}
-        className="relative z-10 "
+        className="relative"
         scroll={{ x: 700 }}
       />
     </div>

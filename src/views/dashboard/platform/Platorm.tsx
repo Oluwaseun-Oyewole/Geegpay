@@ -18,14 +18,20 @@ const variant = {
 
 const Platform = () => {
   return (
-    <motion.div variants={variant} animate="visible" initial="hidden">
-      <div className="w-full bg-white rounded-lg px-5 h-[445px] overflow-scroll scroll-smooth">
+    <motion.div
+      variants={variant}
+      animate="visible"
+      initial="hidden"
+      className="col-span-1"
+    >
+      <div className="w-full bg-white rounded-lg px-5 h-[445px] overflow-scroll scroll-smooth ">
         <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white">
           <Typography
             type="h1"
             variant="textXl"
             weight="medium"
             children="Top Platforms"
+            className="!text-lg md:!text-xl"
           />
           <Button
             children="See All"

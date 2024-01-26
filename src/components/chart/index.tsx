@@ -195,7 +195,7 @@ export const CustomChart: FC<Props> = ({
           plotOptions: {
             bar: {
               horizontal: false,
-              borderRadius: 5,
+              borderRadius: 7,
               width: "10px",
             },
           },
@@ -204,6 +204,17 @@ export const CustomChart: FC<Props> = ({
           },
         },
       },
+      {
+        breakpoint: 400,
+        options: {
+          plotOptions: {
+            bar: {
+              borderRadius: 5,
+            },
+          },
+        },
+      },
+
       {
         breakpoint: 1000,
         options: {

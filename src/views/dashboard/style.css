@@ -4,3 +4,35 @@
   background: rgb(255, 255, 255);
   box-shadow: 0px 4px 25px 0px rgba(29, 78, 216, 0.05) !important;
 }
+
+.grid_container {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-areas:
+    "one one one two two"
+    "three three three four four";
+}
+
+.grid_container > div:nth-child(1) {
+  grid-area: one;
+}
+.grid_container > div:nth-child(2) {
+  grid-area: two;
+}
+.grid_container > div:nth-child(3) {
+  grid-area: three;
+}
+.grid_container > div:nth-child(4) {
+  grid-area: four;
+}
+
+@media screen and (max-width: 1200px) {
+  .grid_container {
+    grid-template-areas:
+      "one one one one one"
+      "two two two two two"
+      "four four four four four"
+      "three three three three three";
+  }
+}

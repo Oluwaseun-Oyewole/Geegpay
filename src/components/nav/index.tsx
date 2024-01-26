@@ -12,7 +12,6 @@ import { PageTitle } from "../../helper/keyConstants";
 import Search from "../search";
 import Typography from "../typography";
 import { Menu } from "./mobile";
-import "./style.css";
 
 type IFrom = "last" | "first" | "center";
 const staggerLinks = (delayTime?: number, state?: IFrom) =>
@@ -23,7 +22,9 @@ const useAnimation = (isOpen: boolean) => {
   useEffect(() => {
     animate(
       "nav",
-      isOpen ? { transform: "translate(-0px)", opacity: 1 } : { opacity: 0 },
+      isOpen
+        ? { opacity: 1, display: "block" }
+        : { opacity: 0, display: "none" },
       {
         ease: [0.08, 0.65, 0.53, 0.96],
         duration: 0.3,
@@ -144,10 +145,7 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
               <Typography type="p">{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
             </div>
           </div>
-          <div
-            className="relative z-50 flex items-center gap-2"
-            onClick={() => toggle()}
-          >
+          <div className="flex items-center gap-2" onClick={() => toggle()}>
             {!isOpen ? (
               <div onClick={openMobileMenu}>
                 <RxHamburgerMenu size={25} />

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
@@ -19,9 +25,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.ant-table-thead > tr {
 }
 
 .ant-table-thead > tr > th {
@@ -44,8 +47,3 @@ body {
 .ant-table-tbody > tr {
   cursor: pointer !important;
 }
-
-/* #chart {
-  max-width: 100px;
-  margin: 35px auto;
-} */

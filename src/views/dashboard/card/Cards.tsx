@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 import Typography from "../../../components/typography";
 import { DashboardCards } from "../../../helper/keyConstants";
-import "./style.css";
 
 const Cards = () => {
   const backgroundColors = [
@@ -38,7 +37,12 @@ const Cards = () => {
   });
 
   return (
-    <motion.div variants={variant} animate="visible" initial="hidden">
+    <motion.div
+      variants={variant}
+      animate="visible"
+      initial="hidden"
+      className="col-span-1"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-[320px]">
         {updatedCards.map((el, i) => (
           <div
@@ -74,10 +78,16 @@ const Cards = () => {
                   {el.percentage}
                 </Typography>
               </div>
-              <Typography type="p" className="text-[#606060]" children="vs." />
-              <Typography type="p" className="text-[#606060]">
-                {el.date}
-              </Typography>
+              <div className="flex gap-2">
+                <Typography
+                  type="p"
+                  className="text-[#606060]"
+                  children="vs."
+                />
+                <Typography type="p" className="text-[#606060]">
+                  {el.date}
+                </Typography>
+              </div>
             </div>
           </div>
         ))}
