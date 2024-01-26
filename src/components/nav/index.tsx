@@ -22,9 +22,7 @@ const useAnimation = (isOpen: boolean) => {
   useEffect(() => {
     animate(
       "nav",
-      isOpen
-        ? { opacity: 1, display: "block" }
-        : { opacity: 0, display: "none" },
+      isOpen ? { visibility: "visible" } : { visibility: "hidden" },
       {
         ease: [0.08, 0.65, 0.53, 0.96],
         duration: 0.3,
@@ -50,17 +48,14 @@ type INavProps = {
 
 const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
   const scope = useAnimation(isOpen);
-
   const [currentDate, ,] = useState<Date>(new Date());
   const [currentYear, setCurrentYear] = useState<number>(0);
   const [currentMonth, setCurrentMonth] = useState<number | string>(0);
   const [currentDay, setCurrentDay] = useState<number>(0);
   const [clicked, setClicked] = useState(false);
-
   const openMobileMenu = () => {
     setClicked(!clicked);
   };
-
   useEffect(() => {
     const updateDate = () => {
       const year = currentDate.getFullYear();
@@ -83,10 +78,8 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
     const intervalId = setInterval(updateDate, 1000);
     return () => clearInterval(intervalId);
   }, [currentDate]);
-
   const location = useLocation();
   const match = location.pathname.match(/\/app\/([^/]+)/);
-
   const getTitleEnum = match
     ? match[1]
     : location.pathname.split("/").pop() || "";
@@ -107,7 +100,7 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
         <div className="hidden lg:grid grid-flow-col grid-cols-1  xl:grid-cols-[50%_45%] gap-6 items-center justify-between">
           <div className="flex justify-between w-full">
             <div className="flex gap-2 items-center">
-              <img src={Calender} alt="calender" />{" "}
+              <img src={Calender} alt="calender" />
               <Typography type="p">{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
             </div>
             <img
@@ -145,7 +138,10 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
               <Typography type="p">{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
             </div>
           </div>
-          <div className="flex items-center gap-2" onClick={() => toggle()}>
+          <div
+            className="flex items-center gap-2 relative z-[1000]"
+            onClick={() => toggle()}
+          >
             {!isOpen ? (
               <div onClick={openMobileMenu}>
                 <RxHamburgerMenu size={25} />

@@ -37,7 +37,7 @@ const GeegCharts = () => {
       variants={variant}
       animate="visible"
       initial="hidden"
-      className="bg-white md:pt-4 pt-2 px-2 md:px-5 rounded-xl border-[1px] border-gray200 col-span-2"
+      className="bg-white md:pt-4 pt-2 px-2 md:px-5 rounded-xl border-[1px] border-gray200"
     >
       <div className="grid grid-flow-col grid-cols-[max-content_max-content] justify-between">
         <Typography

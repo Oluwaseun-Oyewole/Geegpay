@@ -37,12 +37,7 @@ const Cards = () => {
   });
 
   return (
-    <motion.div
-      variants={variant}
-      animate="visible"
-      initial="hidden"
-      className="col-span-1"
-    >
+    <motion.div variants={variant} animate="visible" initial="hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-[320px]">
         {updatedCards.map((el, i) => (
           <div

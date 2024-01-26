@@ -14,7 +14,7 @@ import Button from "../button";
 export const Menu = () => {
   return (
     <nav
-      className={`overflow-x-hidden shadow-sm lg:hidden h-screen pt-14 grid justify-center absolute right-0 top-0 w-[100px] items-center menu bg-white`}
+      className={`overflow-x-hidden shadow-md lg:hidden h-screen pt-14 grid justify-between absolute right-0 top-0 w-[100px] items-center bg-white`}
     >
       <ul>
         <li>

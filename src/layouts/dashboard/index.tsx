@@ -14,7 +14,6 @@ const DashboardLayout = () => {
     <>
       <div
         className={`grid w-full grid-flow-col lg:grid-cols-[max-content_auto] items-start`}
-        onClick={() => isOpen && setIsOpen(false)}
       >
         <div className="hidden lg:block sticky left-0 top-0">
           <Sidebar />
@@ -24,7 +23,10 @@ const DashboardLayout = () => {
           <div className="bg-transparentGrey sticky left-0 top-0 z-50">
             <Navbar isOpen={isOpen} toggle={toggle} />
           </div>
-          <div className="px-4 lg:px-6 relative">
+          <div
+            className="px-4 lg:px-6 relative"
+            onClick={() => isOpen && setIsOpen(false)}
+          >
             <Outlet />
           </div>
         </div>
