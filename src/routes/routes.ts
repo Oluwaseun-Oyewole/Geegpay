@@ -1,8 +1,6 @@
 export const enum Routes {
-  base = "/",
-
   // dashboard
-  dashboard = "",
+  dashboard = "/",
 
   analytics = "/#",
   report = "/app/reports",

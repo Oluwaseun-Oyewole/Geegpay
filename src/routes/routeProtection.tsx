@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 
 export type RouteProtectionProps = {
   children: JSX.Element;
-  redirect: string;
+  redirect?: string;
   replace?: boolean;
   validations: Array<boolean | (() => boolean)>;
   onInValid?: () => void;
@@ -29,7 +29,7 @@ function RouteProtection({
     if (onInValid) {
       onInValid();
     }
-    return <Navigate to={redirect} replace={canReplace} />;
+    return <Navigate to={redirect || ""} replace={canReplace} />;
   }
 
   return children;
