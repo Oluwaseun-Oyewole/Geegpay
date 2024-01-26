@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { MdLightMode, MdOutlineDarkMode } from "react-icons/md";
+import { Tooltip } from "antd";
 import { RxDashboard } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
 import Box from "../../assets/svg/box.svg";
@@ -11,11 +10,13 @@ import Setting from "../../assets/svg/settings.svg";
 import Spiral from "../../assets/svg/spiral.svg";
 import User from "../../assets/svg/users.svg";
 import { useTheme } from "../../context";
+import { handleLogout } from "../../helper";
 import { Routes } from "../../routes/routes";
 import Button from "../button";
+import Toggler from "../toggle";
 
 export const Menu = () => {
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { isDarkMode } = useTheme();
   return (
     <nav
       className={`overflow-x-hidden shadow-md lg:hidden h-screen pt-14 grid justify-between absolute right-0 top-0 w-[100px] items-center ${
@@ -60,42 +61,7 @@ export const Menu = () => {
           </Button>
         </li>
         <li>
-          <div className="flex items-center justify-center">
-            <motion.div
-              layout
-              className={`py-0 px-2 rounded-full ${
-                isDarkMode ? "bg-primaryBlack" : "bg-white shadow-lg"
-              }`}
-              onClick={toggleTheme}
-            >
-              <Button>
-                <span
-                  className={`!p-1 ${
-                    isDarkMode && "bg-[#34CAA5]"
-                  } rounded-full`}
-                >
-                  <MdLightMode
-                    className={`${
-                      isDarkMode ? "text-white" : "text-gray400"
-                    }  text-2xl`}
-                  />
-                </span>
-              </Button>
-              <Button>
-                <span
-                  className={`!p-1 ${
-                    !isDarkMode && "bg-[#34CAA5]"
-                  } rounded-full`}
-                >
-                  <MdOutlineDarkMode
-                    className={`${
-                      isDarkMode ? "text-gray400" : "text-white"
-                    } text-2xl`}
-                  />
-                </span>
-              </Button>
-            </motion.div>
-          </div>
+          <Toggler />
         </li>
       </ul>
       <ul className="grid self-end grid-rows-[max-content_max-content] pb-10">
@@ -112,8 +78,10 @@ export const Menu = () => {
         </li>
 
         <li>
-          <Button>
-            <img src={Logout} alt="logo" />
+          <Button onClick={handleLogout}>
+            <Tooltip title="logout">
+              <img src={Logout} alt="logo" />
+            </Tooltip>
           </Button>
         </li>
       </ul>

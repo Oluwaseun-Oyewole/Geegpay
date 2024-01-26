@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { isAuthenticated, isUnAuthenticated } from "../helper";
 import AuthLayout from "../layouts/AuthLayout";
 import DashboardLayout from "../layouts/dashboard";
 import ErrorPage from "../views/error";
@@ -11,7 +12,10 @@ const routes = createBrowserRouter([
   {
     path: Routes.auth,
     element: (
-      <RouteProtection validations={[]} redirect={Routes.dashboard}>
+      <RouteProtection
+        validations={[isUnAuthenticated]}
+        redirect={Routes.dashboard}
+      >
         <AuthLayout />
       </RouteProtection>
     ),
@@ -21,7 +25,7 @@ const routes = createBrowserRouter([
   {
     path: "",
     element: (
-      <RouteProtection validations={[]}>
+      <RouteProtection validations={[isAuthenticated]} redirect={Routes.login}>
         <DashboardLayout />
       </RouteProtection>
     ),
