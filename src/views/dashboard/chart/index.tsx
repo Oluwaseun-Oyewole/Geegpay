@@ -1,11 +1,14 @@
 import { Dropdown } from "antd";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { IoMdArrowDropdown } from "react-icons/io";
 import ChevronDownSolid from "../../../assets/svg/dropdown.svg";
 import Typography from "../../../components/typography";
+import { useTheme } from "../../../context";
 import Chart from "./Chart";
 
 const GeegCharts = () => {
+  const { isDarkMode } = useTheme();
   const variant = {
     hidden: { opacity: 0, x: -300 },
     visible: {
@@ -37,7 +40,9 @@ const GeegCharts = () => {
       variants={variant}
       animate="visible"
       initial="hidden"
-      className="bg-white md:pt-4 pt-2 px-2 md:px-5 rounded-xl border-[1px] border-gray200"
+      className={`${
+        isDarkMode ? "bg-black border-gray-500" : "bg-white  border-gray200"
+      } md:pt-4 pt-2 px-2 md:px-5 rounded-xl border-[1px]`}
     >
       <div className="grid grid-flow-col grid-cols-[max-content_max-content] justify-between">
         <Typography
@@ -45,7 +50,7 @@ const GeegCharts = () => {
           variant="textXl"
           weight="medium"
           children="Sales Trends"
-          className="!text-lg md:!text-xl"
+          className={`${isDarkMode && "text-gray200"} !text-lg md:!text-xl`}
         />
 
         <div className="grid grid-flow-col items-center grid-cols-[max-content_auto]">
@@ -54,9 +59,12 @@ const GeegCharts = () => {
             variant="textSm"
             weight="medium"
             children="Sort by:"
+            className={`${isDarkMode && "text-gray200"}`}
           />
           <Dropdown
-            className="py-[8px] block px-[16px] bg-white w-full max-w-[321px] cursor-pointer text-[14px] rounded-full !text-xs shadow-sm"
+            className={`py-[8px] block px-[16px] ${
+              isDarkMode ? "bg-primaryBlack text-gray200" : "bg-white"
+            } w-full max-w-[321px] cursor-pointer text-[14px] rounded-full !text-xs shadow-sm`}
             overlayClassName="header-program-filter-dropdown"
             openClassName="rounded-b-none shadow-sm"
             menu={{
@@ -65,7 +73,11 @@ const GeegCharts = () => {
                   key: filter.label,
                   label: (
                     <div
-                      className={`px-[18px] py-[14px] flex justify-between items-center hover:text-white hover:bg-[rgba(52,202,165,0.5)]  ${
+                      className={`${
+                        isDarkMode
+                          ? "bg-primaryBlack text-gray200 hover:text-[rgba(52,202,165,0.9)]"
+                          : "hover:text-white hover:bg-[rgba(52,202,165,0.5)]"
+                      } px-[18px] py-[14px] flex justify-between items-center ${
                         dateFilter === filter.label ? "shadow-md" : ""
                       } 
                 ${index === filters.length - 1 ? "" : "border-b-[1px]"}
@@ -88,7 +100,11 @@ const GeegCharts = () => {
           >
             <button className="flex justify-between items-center text-[16px] gap-2">
               {dateFilter || <span className="">Select</span>}
-              <img src={ChevronDownSolid} alt="chev" className="w-4" />
+              {isDarkMode ? (
+                <IoMdArrowDropdown className="text-white text-lg" />
+              ) : (
+                <img src={ChevronDownSolid} alt="chev" className="w-4" />
+              )}
             </button>
           </Dropdown>
         </div>

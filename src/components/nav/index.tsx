@@ -1,13 +1,15 @@
 import { stagger, useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
-import { IoMdClose } from "react-icons/io";
+import { IoIosNotificationsOutline, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { SlCalender } from "react-icons/sl";
 import { useLocation } from "react-router-dom";
 import Profile from "../../assets/svg/Profile.svg";
 import Calender from "../../assets/svg/calender.svg";
 import Dropdown from "../../assets/svg/dropdown.svg";
 import Logo from "../../assets/svg/logo.svg";
 import Notification from "../../assets/svg/notification.svg";
+import { useTheme } from "../../context";
 import { PageTitle } from "../../helper/keyConstants";
 import Search from "../search";
 import Typography from "../typography";
@@ -47,6 +49,8 @@ type INavProps = {
 };
 
 const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
+  const { isDarkMode } = useTheme();
+
   const scope = useAnimation(isOpen);
   const [currentDate, ,] = useState<Date>(new Date());
   const [currentYear, setCurrentYear] = useState<number>(0);
@@ -79,19 +83,24 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
     return () => clearInterval(intervalId);
   }, [currentDate]);
   const location = useLocation();
-  const match = location.pathname.match(/\/app\/([^/]+)/);
-  const getTitleEnum = match
-    ? match[1]
-    : location.pathname.split("/").pop() || "";
+  const match = location.pathname.match(/\/([^/]*)/);
+  const getTitleEnum = match ? match[0] : location.pathname.split("/").pop();
 
   return (
     <header>
       <nav
         ref={scope}
-        className="grid lg:grid-flow-col items-center lg:grid-cols-[60%_auto] px-3 lg:px-6 lg:py-5 border-b border-gray200 lg:gap-10"
+        className={`grid lg:grid-flow-col items-center lg:grid-cols-[60%_auto] px-3 lg:px-6 lg:py-5 border-b ${
+          isDarkMode ? "border-gray-500" : "border-gray200 "
+        } lg:gap-10`}
       >
         <div className=" hidden lg:grid grid-flow-col items-center justify-between">
-          <Typography type="h1" className="" variant="textXl" weight="medium">
+          <Typography
+            type="h1"
+            className={isDarkMode ? "text-gray200" : ""}
+            variant="textXl"
+            weight="medium"
+          >
             {PageTitle[getTitleEnum as keyof typeof PageTitle]}
           </Typography>
           <Search />
@@ -100,22 +109,39 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
         <div className="hidden lg:grid grid-flow-col grid-cols-1  xl:grid-cols-[50%_45%] gap-6 items-center justify-between">
           <div className="flex justify-between w-full">
             <div className="flex gap-2 items-center">
-              <img src={Calender} alt="calender" />
-              <Typography type="p">{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
+              {isDarkMode ? (
+                <SlCalender className="text-gray200" />
+              ) : (
+                <img src={Calender} alt="calender" />
+              )}
+              <Typography
+                type="p"
+                className={`${isDarkMode ? "!text-gray200" : ""}`}
+              >{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
             </div>
-            <img
-              src={Notification}
-              alt="notification"
-              className="cursor-pointer"
-            />
+
+            {isDarkMode ? (
+              <IoIosNotificationsOutline className="text-white text-2xl rounded-full border-[0.5px] border-gray-50" />
+            ) : (
+              <img
+                src={Notification}
+                alt="notification"
+                className="cursor-pointer"
+              />
+            )}
           </div>
           <div className="hidden xl:flex items-center justify-between gap-2 border-[1.5px] border-gray200 rounded-full py-1 px-2 ">
-            <img src={Profile} alt="profile" />
+            {isDarkMode ? (
+              <IoIosNotificationsOutline className="text-white text-2xl" />
+            ) : (
+              <img src={Profile} alt="profile" />
+            )}
+
             <div>
               <Typography
                 type="p"
                 children="Justin Bergson"
-                className="text-center"
+                className={`text-center ${isDarkMode ? "text-white" : ""}`}
               />
               <Typography
                 type="p"
@@ -134,8 +160,15 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
           </div>
           <div className="justify-between hidden md:flex lg:hidden">
             <div className="flex gap-2 items-center">
-              <img src={Calender} alt="calender" />{" "}
-              <Typography type="p">{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
+              {isDarkMode ? (
+                <SlCalender className="text-gray200" />
+              ) : (
+                <img src={Calender} alt="calender" />
+              )}
+              <Typography
+                type="p"
+                className={`${isDarkMode ? "!text-gray200" : ""}`}
+              >{` ${currentMonth} ${currentDay},  ${currentYear}`}</Typography>
             </div>
           </div>
           <div
@@ -144,11 +177,17 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
           >
             {!isOpen ? (
               <div onClick={openMobileMenu}>
-                <RxHamburgerMenu size={25} />
+                <RxHamburgerMenu
+                  size={25}
+                  className={`${isDarkMode && "text-gray200"}`}
+                />
               </div>
             ) : (
               <div onClick={openMobileMenu}>
-                <IoMdClose size={25} />
+                <IoMdClose
+                  size={25}
+                  className={`${isDarkMode && "text-gray200"}`}
+                />
               </div>
             )}
           </div>

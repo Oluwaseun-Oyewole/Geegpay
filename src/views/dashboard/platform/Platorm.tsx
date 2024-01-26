@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Button from "../../../components/button";
 import Typography from "../../../components/typography";
+import { useTheme } from "../../../context";
 import { Platforms } from "../../../helper/keyConstants";
 
 const variant = {
@@ -17,10 +18,19 @@ const variant = {
 };
 
 const Platform = () => {
+  const { isDarkMode } = useTheme();
   return (
     <motion.div variants={variant} animate="visible" initial="hidden">
-      <div className="w-full bg-white rounded-lg px-5 h-[445px] overflow-scroll scroll-smooth ">
-        <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white">
+      <div
+        className={`"w-full ${
+          isDarkMode ? "bg-black" : "bg-white"
+        } rounded-lg px-5 h-[445px] overflow-scroll scroll-smooth shadow-sm"`}
+      >
+        <div
+          className={`py-2 flex items-center justify-between sticky left-0 top-0 ${
+            isDarkMode ? "bg-black text-gray200" : "bg-white"
+          }`}
+        >
           <Typography
             type="h1"
             variant="textXl"
@@ -43,9 +53,13 @@ const Platform = () => {
                   children={el.title}
                   weight="medium"
                   variant="textMd"
-                  className="pb-3"
+                  className={`pb-3 ${isDarkMode && "text-gray200"}`}
                 />
-                <div className="bg-[#F5F5F5] h-3 rounded-full w-full">
+                <div
+                  className={`${
+                    isDarkMode ? "bg-gray400" : "bg-[#F5F5F5]"
+                  } h-3 rounded-full w-full"`}
+                >
                   <span
                     className="block rounded-full h-3"
                     style={{ width: el.progress, background: el.color }}

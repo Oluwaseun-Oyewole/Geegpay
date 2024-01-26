@@ -1,6 +1,7 @@
-import { Table } from "antd";
+import { ConfigProvider, Table } from "antd";
 import type { TablePaginationConfig, TableProps } from "antd/es/table";
 import React from "react";
+import { useTheme } from "../../context";
 
 export interface TableParams {
   pagination?: TablePaginationConfig;
@@ -18,17 +19,31 @@ const GeegTable: React.FC<ITableProps> = ({
   onChange,
   ...rest
 }) => {
+  const { isDarkMode } = useTheme();
   return (
     <div>
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        onChange={onChange}
-        pagination={pagination}
-        {...rest}
-        className="relative"
-        scroll={{ x: 700 }}
-      />
+      <ConfigProvider
+        theme={{
+          components: {
+            Table: {
+              colorBgContainer: `${isDarkMode ? "#212121" : ""}`,
+              rowHoverBg: `${isDarkMode ? "black" : ""}`,
+              colorText: `${isDarkMode ? "#E5EAEF" : ""}`,
+              borderColor: `${isDarkMode ? "gray" : "#D9D9D9"}`,
+            },
+          },
+        }}
+      >
+        <Table
+          dataSource={dataSource}
+          columns={columns}
+          onChange={onChange}
+          pagination={pagination}
+          {...rest}
+          className="relative"
+          scroll={{ x: 700 }}
+        />
+      </ConfigProvider>
     </div>
   );
 };

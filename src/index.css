@@ -53,3 +53,7 @@ li {
 .ant-table-tbody > tr {
   cursor: pointer !important;
 }
+
+.search-input::-webkit-search-clear-button {
+  background-color: red !important;
+}

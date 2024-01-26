@@ -9,6 +9,8 @@ export default {
         gray400: "#A3A3A3",
         primary: "#F7F8FA",
         secondary: "#9CA4AB",
+        black: "#212121",
+        primaryBlack: "#2C2C2C",
       },
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],

@@ -12,14 +12,8 @@ type PageTitle = {
 };
 
 export const PageTitle: PageTitle = {
-  dashboard: "Dashboard",
+  "/": "Dashboard",
   order: "Order",
-  menu: "Menu",
-  review: "Review",
-  setting: "Setting",
-  payment: "Payment",
-  accounts: "Account",
-  help: "help",
 };
 
 export const DashboardCards = [

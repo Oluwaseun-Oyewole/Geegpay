@@ -9,6 +9,7 @@ import Philip from "../../../assets/svg/philip.svg";
 import Button from "../../../components/button";
 import GeegTable from "../../../components/table";
 import Typography from "../../../components/typography";
+import { useTheme } from "../../../context";
 
 type UserType = { name: string; img: string };
 interface DataType {
@@ -133,10 +134,19 @@ const variant = {
 };
 
 export const OrderTable = () => {
+  const { isDarkMode } = useTheme();
   return (
     <motion.div variants={variant} animate="visible" initial="hidden">
-      <div className="w-full bg-white rounded-lg px-5 ">
-        <div className="py-2 flex items-center justify-between sticky left-0 top-0 bg-white z-10 ">
+      <div
+        className={`w-full ${
+          isDarkMode ? "bg-black" : "bg-white"
+        } rounded-lg px-5`}
+      >
+        <div
+          className={`"py-2 flex items-center justify-between sticky left-0 top-0 ${
+            isDarkMode ? "bg-black text-gray200" : "bg-white"
+          } z-10"`}
+        >
           <Typography
             type="h1"
             variant="textXl"

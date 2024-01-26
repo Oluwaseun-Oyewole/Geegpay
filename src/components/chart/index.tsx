@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from "react";
 import Chart from "react-apexcharts";
+import { useTheme } from "../../context";
 
 type IBorder = "around" | "end";
 
@@ -32,12 +33,13 @@ export const CustomChart: FC<Props> = ({
   categories,
   borderRadiusApplication = "end",
 }) => {
+  const { isDarkMode } = useTheme();
   const yaxisOptions = {
     show: true,
     labels: {
       show: true,
       style: {
-        colors: "gray",
+        colors: `${isDarkMode ? "#E5EAEF" : ""}`,
         fontSize: "13px",
         fontWeight: 300,
         fontFamily: "Plus Jakarta Sans",
@@ -66,7 +68,7 @@ export const CustomChart: FC<Props> = ({
       labels: {
         show: true,
         style: {
-          colors: "#A3A3A3",
+          colors: `${isDarkMode ? "#E5EAEF" : "#A3A3A3"}`,
           fontSize: "12px",
           fontFamily: "Plus Jakarta Sans",
           fontWeight: 400,
@@ -117,7 +119,7 @@ export const CustomChart: FC<Props> = ({
     grid: {
       show: showGrid ?? true,
       strokeDashArray: 5,
-      borderColor: "#EAEAEA",
+      borderColor: `${isDarkMode ? "black" : "#EAEAEA"}`,
       yaxis: {
         lines: {
           show: true,

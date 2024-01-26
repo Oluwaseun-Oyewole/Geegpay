@@ -1,18 +1,18 @@
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import Typography from "../../../components/typography";
+import { useTheme } from "../../../context";
 import { DashboardCards } from "../../../helper/keyConstants";
 
 const Cards = () => {
+  const { isDarkMode } = useTheme();
   const backgroundColors = [
     "rgba(52, 202, 165, 0.12)",
     "rgba(237, 84, 78, 0.12)",
     "rgba(237, 84, 78, 0.12)",
     "rgba(52, 202, 165, 0.12)",
   ];
-
   const colors = ["#34CAA5", "#ED544E", "#ED544E", "#34CAA5"];
-
   const variant = {
     hidden: { opacity: 0, x: 300 },
     visible: {
@@ -25,7 +25,6 @@ const Cards = () => {
       },
     },
   };
-
   const updatedCards = DashboardCards.map((card) => {
     switch (card.id) {
       case 1:
@@ -38,12 +37,16 @@ const Cards = () => {
 
   return (
     <motion.div variants={variant} animate="visible" initial="hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-[320px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-[320px] shadow-sm">
         {updatedCards.map((el, i) => (
           <div
             className={classNames(
-              `flex flex-col px-3 py-4 bg-white w-full cursor-pointer`,
-              "rounded-xl border border-gray-100 space-y-3 ease-in-out shadow-sm"
+              `flex flex-col px-3 py-4 ${
+                isDarkMode ? "bg-black" : "bg-white"
+              } w-full cursor-pointer`,
+              `rounded-xl border ${
+                isDarkMode ? "border-gray-500" : "border-gray-100"
+              } space-y-3 ease-in-out shadow-sm`
             )}
             key={`dashboardCard${i}`}
           >
@@ -52,11 +55,20 @@ const Cards = () => {
               <img src={el.graph} alt="image" />
             </div>
 
-            <Typography type="p" className="text-[#898989] !text-lg">
+            <Typography
+              type="p"
+              className={`${
+                isDarkMode ? "!text-gray200" : "!text-[#898989]"
+              } !text-lg`}
+            >
               {el.title}
             </Typography>
 
-            <Typography type="p" className="!text-lg " weight="medium">
+            <Typography
+              type="p"
+              className={`${isDarkMode ? "text-gray200" : ""} !text-lg`}
+              weight="medium"
+            >
               {el.amount}
             </Typography>
 
@@ -76,10 +88,17 @@ const Cards = () => {
               <div className="flex gap-2">
                 <Typography
                   type="p"
-                  className="text-[#606060]"
+                  className={`${
+                    isDarkMode ? "text-gray200" : "text-[#606060]"
+                  }`}
                   children="vs."
                 />
-                <Typography type="p" className="text-[#606060]">
+                <Typography
+                  type="p"
+                  className={`${
+                    isDarkMode ? "text-gray200" : "text-[#606060]"
+                  }`}
+                >
                   {el.date}
                 </Typography>
               </div>
