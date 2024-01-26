@@ -7,6 +7,12 @@ import Order from "../assets/svg/order.svg";
 import Refund from "../assets/svg/refund.svg";
 import Sales from "../assets/svg/sales.svg";
 
+export const keyConstants = {
+  EXPIRY_TOKEN_TIME: "auth_expiry",
+  EXPIRE_AUTH_TOKEN_TIME: "expire-auth-token",
+  AUTH_TOKEN: "auth_key",
+};
+
 type PageTitle = {
   [key: string]: string;
 };

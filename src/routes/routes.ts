@@ -1,10 +1,9 @@
 export const enum Routes {
+  // auth
+
+  auth = "/auth",
+  login = "/auth/login",
+
   // dashboard
   dashboard = "/",
-
-  analytics = "/#",
-  report = "/app/reports",
-  calender = "/##",
-  chat = "/###",
-  play = "/####",
 }
