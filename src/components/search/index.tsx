@@ -44,12 +44,12 @@ const Search: React.FC<ISearchProps> = (props) => {
                 }}
                 className={`search-input relative px-8 !rounded-full !py-[12px] placeholder:text-xs ${
                   isDarkMode
-                    ? "bg-[rgba(52,202,165,0.4)] text-gray200 !border-black placeholder:text-gray200 "
+                    ? "bg-gray200 !border-black placeholder:text-black text-black"
                     : "bg-white text-gray400 !border-gray200"
                 } text-sm !focus:bg-transparent  border-[1.5px]  outline-none w-[350px] font-medium placeholder:font-medium`}
               />
               {isDarkMode ? (
-                <IoSearchOutline className="absolute top-[19.5px] left-2 text-sm w-7 text-gray200" />
+                <IoSearchOutline className="absolute top-[19.5px] left-2 text-sm w-7 text-black font-bold" />
               ) : (
                 <img
                   src={SearchImage}

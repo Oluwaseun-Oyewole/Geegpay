@@ -25,6 +25,9 @@ const GeegCharts = () => {
   const [dateFilter, setDateFilter] = useState<string | null>(null);
   const filters = [
     {
+      label: "Daily",
+    },
+    {
       label: "Weekly",
     },
     {

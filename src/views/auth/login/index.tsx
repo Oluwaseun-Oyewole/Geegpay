@@ -86,7 +86,7 @@ export const Login = () => {
                 <Button
                   className={`!mt-6 !py-4 !rounded-sm ${
                     isDarkMode
-                      ? "bg-[#34CAA5]"
+                      ? "bg-[#34CAA5] text-white"
                       : "bg-[#34CAA5] text-gray200 disabled:cursor-not-allowed"
                   }`}
                   isLoading={formik.isSubmitting || loading}
