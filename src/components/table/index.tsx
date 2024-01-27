@@ -27,7 +27,7 @@ const GeegTable: React.FC<ITableProps> = ({
           components: {
             Table: {
               colorBgContainer: `${isDarkMode ? "#212121" : ""}`,
-              rowHoverBg: `${isDarkMode ? "black" : ""}`,
+              rowHoverBg: `${isDarkMode ? "black" : "#FAFAFA"}`,
               colorText: `${isDarkMode ? "#E5EAEF" : ""}`,
               borderColor: `${isDarkMode ? "gray" : "#D9D9D9"}`,
             },
