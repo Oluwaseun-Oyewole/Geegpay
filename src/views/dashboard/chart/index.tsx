@@ -25,9 +25,6 @@ const GeegCharts = () => {
   const [dateFilter, setDateFilter] = useState<string | null>(null);
   const filters = [
     {
-      label: "Daily",
-    },
-    {
       label: "Weekly",
     },
     {
@@ -114,7 +111,7 @@ const GeegCharts = () => {
       </div>
 
       <div className="mt-2 lg:mt-5">
-        <Chart />
+        <Chart filter={dateFilter ?? "Yearly"} />
       </div>
     </motion.div>
   );

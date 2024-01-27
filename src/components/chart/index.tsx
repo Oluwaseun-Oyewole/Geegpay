@@ -18,8 +18,9 @@ type Props = {
   stacked?: boolean;
   plotOptions?: boolean;
   showGrid?: boolean;
-  categories: Array<string>;
+  categories: Array<string> | undefined;
   borderRadiusApplication?: IBorder;
+  filterBy?: string;
 };
 
 export const CustomChart: FC<Props> = ({
@@ -32,6 +33,7 @@ export const CustomChart: FC<Props> = ({
   showGrid,
   categories,
   borderRadiusApplication = "end",
+  filterBy,
 }) => {
   const { isDarkMode } = useTheme();
   const yaxisOptions = {
@@ -177,7 +179,7 @@ export const CustomChart: FC<Props> = ({
     plotOptions: {
       bar: {
         horizontal: false,
-        borderRadius: 20,
+        borderRadius: filterBy === "Weekly" ? 30 : 20,
         borderRadiusApplication: borderRadiusApplication,
         barHeight: "10%",
         colors: {
@@ -192,12 +194,28 @@ export const CustomChart: FC<Props> = ({
     },
     responsive: [
       {
+        breakpoint: 800,
+        options: {
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: filterBy === "Weekly" ? 25 : 7,
+              width: "10px",
+            },
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
+      },
+
+      {
         breakpoint: 500,
         options: {
           plotOptions: {
             bar: {
               horizontal: false,
-              borderRadius: 7,
+              borderRadius: filterBy === "Weekly" ? 10 : 7,
               width: "10px",
             },
           },
@@ -211,7 +229,7 @@ export const CustomChart: FC<Props> = ({
         options: {
           plotOptions: {
             bar: {
-              borderRadius: 5,
+              borderRadius: filterBy === "Weekly" ? 7 : 5,
             },
           },
         },

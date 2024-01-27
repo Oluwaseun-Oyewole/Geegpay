@@ -27,7 +27,7 @@ li {
 
 .apexcharts-tooltip {
   background: #090c2c !important;
-  width: 100px !important;
+  min-width: 100px !important;
   display: flex;
   align-items: center;
   justify-content: center;
