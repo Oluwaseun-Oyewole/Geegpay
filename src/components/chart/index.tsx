@@ -179,9 +179,11 @@ export const CustomChart: FC<Props> = ({
     plotOptions: {
       bar: {
         horizontal: false,
-        borderRadius: filterBy === "Weekly" ? 30 : 20,
+        borderRadius: filterBy === "Weekly" ? 22 : 10,
         borderRadiusApplication: borderRadiusApplication,
         barHeight: "10%",
+        width: "0",
+        columnWidth: "46%",
         colors: {
           backgroundBarColors: ["#34CAA5"],
           backgroundBarOpacity: 0.02,
@@ -199,8 +201,9 @@ export const CustomChart: FC<Props> = ({
           plotOptions: {
             bar: {
               horizontal: false,
-              borderRadius: filterBy === "Weekly" ? 25 : 7,
+              borderRadius: filterBy === "Weekly" ? 22 : 7,
               width: "10px",
+              columnWidth: "50%",
             },
           },
           legend: {

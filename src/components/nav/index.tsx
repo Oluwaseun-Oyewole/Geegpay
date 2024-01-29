@@ -131,11 +131,7 @@ const Navbar: React.FC<INavProps> = ({ isOpen, toggle }) => {
             )}
           </div>
           <div className="hidden xl:flex items-center justify-between gap-2 border-[1.5px] border-gray200 rounded-full py-1 px-2 ">
-            {isDarkMode ? (
-              <IoIosNotificationsOutline className="text-white text-2xl" />
-            ) : (
-              <img src={Profile} alt="profile" />
-            )}
+            <img src={Profile} alt="profile" />
 
             <div>
               <Typography
